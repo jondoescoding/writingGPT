@@ -7,5 +7,18 @@ Built with [LangChain](https://github.com/hwchase17/langchain)
 In order to set your environment up to run the code here, first install all requirements:
 
 ```shell
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
+
+Go into the root directory and run the following command to start the script
+
+```shell
+python main.py
+```
+
+Output should look like this:
+```shell
+What topic do you want to ELI5?: 
+```
+
+You would prompt the LLM and get a resulting answer in a file and an image.
