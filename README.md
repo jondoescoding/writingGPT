@@ -22,3 +22,8 @@ What topic do you want to ELI5?:
 ```
 
 You would prompt the LLM and get a resulting answer in a file and an image.
+
+# System Requirements
+
+## Python Version
+To use this software, you must have Python 3.10 or later installed. Earlier versions of Python will not compile.
