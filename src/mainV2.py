@@ -27,9 +27,8 @@ writer = hp.chain(
     llm=llmOpenAi,
     template="""
     Role: You are a professional freelance copy writer.
-    Goal: Write a short 100 word eli5 article to understanding {topic}. Be succint with your word choice and use examples after the explanation.
-    Article:
-
+    Goal: Write a short 100 word eli5 article for: {topic}. Be succint with your word choice and use examples after the explanation.
+    Article: Lets think about this step by step...
     """,
     inputVariables=["topic"],
     output_key="article"
@@ -39,10 +38,9 @@ editor = hp.chain(
     llm=llmOpenAi,
     template="""
     Role: You are a professional editor.
-    Goal: For the given article and provides a bulleted list of pieces of feedback and advice.
+    Goal: For the given article provide a bulleted list with pieces of feedback correcting sentence structure, grammar and replacing words which a 5 year old may not understand.
     Article: {article}
     Edits:
-
     """,
     inputVariables=["article"],
     output_key="edits"
@@ -57,7 +55,6 @@ production = hp.chain(
     Article: {article}
     Edits: {edits}
     Final Written Piece:
-
     """,
     inputVariables=["article", "edits"],
     output_key="production"
@@ -67,7 +64,7 @@ promptGen = hp.chain(
     llm=llmOpenAi,
     template="""
     Role: I want you to act as a prompt generator for Midjourney's artificial intelligence program.
-    Goal: Your job is to provide detailed and creative descriptions that will inspire unique and interesting images from the AI based on the given theme of the article. For example, you could describe a scene from a futuristic city, or a surreal landscape filled with strange creatures. The more detailed and imaginative your description, the more interesting the resulting image will be.
+    Goal: Your job is to provide detailed and creative descriptions that will inspire unique and interesting images from the AI based on the article's theme. For example, you could describe a scene from a futuristic city, or a surreal landscape filled with strange creatures. The more detailed and imaginative your description, the more interesting the resulting image will be.
     Article: {article}
     Prompt: 
 
